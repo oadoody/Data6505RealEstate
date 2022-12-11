@@ -1,7 +1,9 @@
-# Data6505RealEstate
-Real Estate Final Project
+# Data6505: Python for Business Analytics 
+Final Project: Real Estate Data Analysis
 
-# Objective
+Authors: Brian Brennan, Frank Patracuolla, Olivia Doody
+ 
+ # Objective
   Our objective with this dataset was to help a family that is looking for a home in the US. We wanted to aid them in finding the best house for them at the lowest price.
 
 # Data Source
