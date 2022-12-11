@@ -17,5 +17,5 @@ LINK to Project
 
 
 # Additional Links
-- Powerpoint presented in class
-- Individual team notebooks
+- Individual team notebook
+-
