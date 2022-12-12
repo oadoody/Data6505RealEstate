@@ -1,12 +1,21 @@
 # Data6505: Python for Business Analytics 
 ![MOVING!](https://media.istockphoto.com/id/1288083160/vector/happy-family-moving-into-new-house-flat-vector-illustration.jpg?s=170667a&w=0&k=20&c=6Q9wfa-kTLMxk6O_8D1pTmyaBDQzTbICXpSv7TtWo3g=)
 
-Final Project: Real Estate Data Analysis
+Final Project: Real Estate Moving Data Analysis
 
 Authors: Brian Brennan, Frank Patracuolla, Olivia Doody
  
  # Objective
   Our objective with this dataset was to help a family that is looking for a home in the NorthEast the US. We wanted to advise them in finding the best house for them at the lowest price.
+  
+ # The Client
+  Background of our client
+     The client we are catering out analysis to has a family with two young children and their location is flexible due to their jobs moving online following the COVID-19 pandemic. 
+
+Preferences of client:
+   Traditional
+   Price Range: Maximize the value of dollar to the home offerings
+    Looking for most acrerage, bed/bath, price/sqft value possible to compell relocation
 
 # Data Source
  The data set was found on Kaggle.com and is called "USA Real Estate Data". 900,000 listings were scraped from Realtor.com in order to compose this dataset. You can find the Kaggle page [here](https://www.kaggle.com/datasets/ahmedshahriarsakib/usa-real-estate-dataset?select=realtor-data.csv).
