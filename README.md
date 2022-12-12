@@ -24,7 +24,9 @@ Preferences of client:
 -Further the analysis to find a recommendation
 -Give our client recommended listing
 # Data Source
- The data set was found on Kaggle.com and is called "USA Real Estate Data". 900,000 listings were scraped from Realtor.com in order to compose this dataset. You can find the Kaggle page [here](https://www.kaggle.com/datasets/ahmedshahriarsakib/usa-real-estate-dataset?select=realtor-data.csv).
+ The data set was found on Kaggle.com and is called "USA Real Estate Data"
+ 900,000 listings were scraped from Realtor.com in order to compose this dataset. 
+ You can find the Kaggle page [here](https://www.kaggle.com/datasets/ahmedshahriarsakib/usa-real-estate-dataset?select=realtor-data.csv).
 
 # Challenges 
   Although the dataset had 900,000 listings, many of them were duplicates which needed to be taken out. The dataset only have listings from 18 states. After we had removed duplicates some of these states only had one or a few listings. In order to increase the accuracy of our analysis we left these out so they would not skew our findings, leaving our group with a narrowed selection of states all commonly in the NorthEast.
@@ -35,4 +37,3 @@ LINK to Project
 
 # Additional Links
 - Individual team notebook
--
