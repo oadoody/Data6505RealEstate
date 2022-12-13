@@ -12,22 +12,22 @@ Authors: Brian Brennan, Frank Patracuolla, Olivia Doody
   Background of our client:
      We are catering our analysis to a family with two young children and their location is flexible due to their jobs moving online following the COVID-19 pandemic. 
 
-Preferences of client:
-   **Traditional Family**
+**Preferences of client:**
+   Traditional Family
    
    **Price Range:** Maximize the value of dollar to the home offerings
     Looking for most acrerage, bed/bath, price/sqft value possible to compell relocation
 
 # Process of Our Analysis
-**-**Gathering sufficient data
+-Gathering sufficient data
 
-**-**Cleaning the data and missing values
+-Cleaning the data and missing values
 
-**-**Doing initial analysis to gauge the depth of our data's ability
+-Doing initial analysis to gauge the depth of our data's ability
 
-**-**Further the analysis to find a recommendation
+-Further the analysis to find a recommendation
 
-**-**Give our client recommended listing
+-Give our client recommended listing
 # Data Source
  The data set was found on Kaggle.com and is called "USA Real Estate Data"
  
