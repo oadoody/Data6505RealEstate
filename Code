@@ -1,1 +1,1310 @@
-Final Code String Here
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "collapsed_sections": [
+        "ary1JHksIEob",
+        "dzRMMpSAJqVr",
+        "PjsjT4jEInNF",
+        "aVAMAh9xKai-",
+        "GuNRgneX4Lmf",
+        "2sNT8Edbb83u"
+      ],
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/gist/oadoody/59db0a79cb9dbf9be7631c4511dbcaea/data6505-final-project.ipynb\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "Group: Brian, Frank and Olivia\n",
+        "\n",
+        "Topic: Real Estate Data"
+      ],
+      "metadata": {
+        "id": "-yDt6hr1BgMY"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "### Import realtor-data.csv from Google Drive"
+      ],
+      "metadata": {
+        "id": "ary1JHksIEob"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# mount google drive to colab\n",
+        "from google.colab import drive\n",
+        "drive.mount(\"/content/drive\")"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "QoBbh1KNGJLA",
+        "outputId": "13cb90d6-3af7-4524-bec7-af90376da09d"
+      },
+      "execution_count": 2,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Drive already mounted at /content/drive; to attempt to forcibly remount, call drive.mount(\"/content/drive\", force_remount=True).\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 3,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 354
+        },
+        "id": "0wepS4YZAvAm",
+        "outputId": "3315706f-6a45-4bde-9a37-fc264d86a8be"
+      },
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "     status     price  bed  bath  acre_lot  \\\n",
+              "0  for_sale  105000.0  3.0   2.0      0.12   \n",
+              "1  for_sale   80000.0  4.0   2.0      0.08   \n",
+              "2  for_sale   67000.0  2.0   1.0      0.15   \n",
+              "3  for_sale  145000.0  4.0   2.0      0.10   \n",
+              "4  for_sale   65000.0  6.0   2.0      0.05   \n",
+              "\n",
+              "                                        full_address  \\\n",
+              "0  Sector Yahuecas Titulo # V84, Adjuntas, PR, 00601   \n",
+              "1            Km 78 9 Carr # 135, Adjuntas, PR, 00601   \n",
+              "2            556G 556-G 16 St, Juana Diaz, PR, 00795   \n",
+              "3  R5 Comunidad El Paraso Calle De Oro R-5 Ponce,...   \n",
+              "4                    14 Navarro, Mayaguez, PR, 00680   \n",
+              "\n",
+              "                                          street        city        state  \\\n",
+              "0                   Sector Yahuecas Titulo # V84    Adjuntas  Puerto Rico   \n",
+              "1                             Km 78 9 Carr # 135    Adjuntas  Puerto Rico   \n",
+              "2                               556G 556-G 16 St  Juana Diaz  Puerto Rico   \n",
+              "3  R5 Comunidad El Paraso Calle De Oro R-5 Ponce       Ponce  Puerto Rico   \n",
+              "4                                     14 Navarro    Mayaguez  Puerto Rico   \n",
+              "\n",
+              "   zip_code  house_size sold_date  \n",
+              "0     601.0       920.0       NaN  \n",
+              "1     601.0      1527.0       NaN  \n",
+              "2     795.0       748.0       NaN  \n",
+              "3     731.0      1800.0       NaN  \n",
+              "4     680.0         NaN       NaN  "
+            ],
+            "text/html": [
+              "\n",
+              "  <div id=\"df-beedf054-3096-43f9-be36-e39721027b6e\">\n",
+              "    <div class=\"colab-df-container\">\n",
+              "      <div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>status</th>\n",
+              "      <th>price</th>\n",
+              "      <th>bed</th>\n",
+              "      <th>bath</th>\n",
+              "      <th>acre_lot</th>\n",
+              "      <th>full_address</th>\n",
+              "      <th>street</th>\n",
+              "      <th>city</th>\n",
+              "      <th>state</th>\n",
+              "      <th>zip_code</th>\n",
+              "      <th>house_size</th>\n",
+              "      <th>sold_date</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>0</th>\n",
+              "      <td>for_sale</td>\n",
+              "      <td>105000.0</td>\n",
+              "      <td>3.0</td>\n",
+              "      <td>2.0</td>\n",
+              "      <td>0.12</td>\n",
+              "      <td>Sector Yahuecas Titulo # V84, Adjuntas, PR, 00601</td>\n",
+              "      <td>Sector Yahuecas Titulo # V84</td>\n",
+              "      <td>Adjuntas</td>\n",
+              "      <td>Puerto Rico</td>\n",
+              "      <td>601.0</td>\n",
+              "      <td>920.0</td>\n",
+              "      <td>NaN</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>1</th>\n",
+              "      <td>for_sale</td>\n",
+              "      <td>80000.0</td>\n",
+              "      <td>4.0</td>\n",
+              "      <td>2.0</td>\n",
+              "      <td>0.08</td>\n",
+              "      <td>Km 78 9 Carr # 135, Adjuntas, PR, 00601</td>\n",
+              "      <td>Km 78 9 Carr # 135</td>\n",
+              "      <td>Adjuntas</td>\n",
+              "      <td>Puerto Rico</td>\n",
+              "      <td>601.0</td>\n",
+              "      <td>1527.0</td>\n",
+              "      <td>NaN</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>2</th>\n",
+              "      <td>for_sale</td>\n",
+              "      <td>67000.0</td>\n",
+              "      <td>2.0</td>\n",
+              "      <td>1.0</td>\n",
+              "      <td>0.15</td>\n",
+              "      <td>556G 556-G 16 St, Juana Diaz, PR, 00795</td>\n",
+              "      <td>556G 556-G 16 St</td>\n",
+              "      <td>Juana Diaz</td>\n",
+              "      <td>Puerto Rico</td>\n",
+              "      <td>795.0</td>\n",
+              "      <td>748.0</td>\n",
+              "      <td>NaN</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>3</th>\n",
+              "      <td>for_sale</td>\n",
+              "      <td>145000.0</td>\n",
+              "      <td>4.0</td>\n",
+              "      <td>2.0</td>\n",
+              "      <td>0.10</td>\n",
+              "      <td>R5 Comunidad El Paraso Calle De Oro R-5 Ponce,...</td>\n",
+              "      <td>R5 Comunidad El Paraso Calle De Oro R-5 Ponce</td>\n",
+              "      <td>Ponce</td>\n",
+              "      <td>Puerto Rico</td>\n",
+              "      <td>731.0</td>\n",
+              "      <td>1800.0</td>\n",
+              "      <td>NaN</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>4</th>\n",
+              "      <td>for_sale</td>\n",
+              "      <td>65000.0</td>\n",
+              "      <td>6.0</td>\n",
+              "      <td>2.0</td>\n",
+              "      <td>0.05</td>\n",
+              "      <td>14 Navarro, Mayaguez, PR, 00680</td>\n",
+              "      <td>14 Navarro</td>\n",
+              "      <td>Mayaguez</td>\n",
+              "      <td>Puerto Rico</td>\n",
+              "      <td>680.0</td>\n",
+              "      <td>NaN</td>\n",
+              "      <td>NaN</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>\n",
+              "      <button class=\"colab-df-convert\" onclick=\"convertToInteractive('df-beedf054-3096-43f9-be36-e39721027b6e')\"\n",
+              "              title=\"Convert this dataframe to an interactive table.\"\n",
+              "              style=\"display:none;\">\n",
+              "        \n",
+              "  <svg xmlns=\"http://www.w3.org/2000/svg\" height=\"24px\"viewBox=\"0 0 24 24\"\n",
+              "       width=\"24px\">\n",
+              "    <path d=\"M0 0h24v24H0V0z\" fill=\"none\"/>\n",
+              "    <path d=\"M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z\"/><path d=\"M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z\"/>\n",
+              "  </svg>\n",
+              "      </button>\n",
+              "      \n",
+              "  <style>\n",
+              "    .colab-df-container {\n",
+              "      display:flex;\n",
+              "      flex-wrap:wrap;\n",
+              "      gap: 12px;\n",
+              "    }\n",
+              "\n",
+              "    .colab-df-convert {\n",
+              "      background-color: #E8F0FE;\n",
+              "      border: none;\n",
+              "      border-radius: 50%;\n",
+              "      cursor: pointer;\n",
+              "      display: none;\n",
+              "      fill: #1967D2;\n",
+              "      height: 32px;\n",
+              "      padding: 0 0 0 0;\n",
+              "      width: 32px;\n",
+              "    }\n",
+              "\n",
+              "    .colab-df-convert:hover {\n",
+              "      background-color: #E2EBFA;\n",
+              "      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);\n",
+              "      fill: #174EA6;\n",
+              "    }\n",
+              "\n",
+              "    [theme=dark] .colab-df-convert {\n",
+              "      background-color: #3B4455;\n",
+              "      fill: #D2E3FC;\n",
+              "    }\n",
+              "\n",
+              "    [theme=dark] .colab-df-convert:hover {\n",
+              "      background-color: #434B5C;\n",
+              "      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);\n",
+              "      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));\n",
+              "      fill: #FFFFFF;\n",
+              "    }\n",
+              "  </style>\n",
+              "\n",
+              "      <script>\n",
+              "        const buttonEl =\n",
+              "          document.querySelector('#df-beedf054-3096-43f9-be36-e39721027b6e button.colab-df-convert');\n",
+              "        buttonEl.style.display =\n",
+              "          google.colab.kernel.accessAllowed ? 'block' : 'none';\n",
+              "\n",
+              "        async function convertToInteractive(key) {\n",
+              "          const element = document.querySelector('#df-beedf054-3096-43f9-be36-e39721027b6e');\n",
+              "          const dataTable =\n",
+              "            await google.colab.kernel.invokeFunction('convertToInteractive',\n",
+              "                                                     [key], {});\n",
+              "          if (!dataTable) return;\n",
+              "\n",
+              "          const docLinkHtml = 'Like what you see? Visit the ' +\n",
+              "            '<a target=\"_blank\" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'\n",
+              "            + ' to learn more about interactive tables.';\n",
+              "          element.innerHTML = '';\n",
+              "          dataTable['output_type'] = 'display_data';\n",
+              "          await google.colab.output.renderOutput(dataTable, element);\n",
+              "          const docLink = document.createElement('div');\n",
+              "          docLink.innerHTML = docLinkHtml;\n",
+              "          element.appendChild(docLink);\n",
+              "        }\n",
+              "      </script>\n",
+              "    </div>\n",
+              "  </div>\n",
+              "  "
+            ]
+          },
+          "metadata": {},
+          "execution_count": 3
+        }
+      ],
+      "source": [
+        "# use pandas to read csv \n",
+        "import pandas as pd\n",
+        "path = \"/content/drive/MyDrive/realtor-data.csv\"\n",
+        "real_estate_rawdata = pd.read_csv(path)\n",
+        "real_estate_rawdata.head()"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "real_estate_rawdata.shape"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "RUcu_qabJzes",
+        "outputId": "9f58cb40-6afb-4114-ecd8-2a4ef75987a7"
+      },
+      "execution_count": 4,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "(923159, 12)"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 4
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "real_estate_rawdata['state'].value_counts()"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "_KBBB07d732M",
+        "outputId": "9e3b6e4a-54d6-4409-e5d5-84892dd5a406"
+      },
+      "execution_count": 5,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "New Jersey        233722\n",
+              "New York          211778\n",
+              "Massachusetts     175248\n",
+              "Connecticut        91644\n",
+              "New Hampshire      51394\n",
+              "Vermont            46460\n",
+              "Maine              36650\n",
+              "Rhode Island       29596\n",
+              "Puerto Rico        24679\n",
+              "Pennsylvania       17148\n",
+              "Virgin Islands      2573\n",
+              "Delaware            2135\n",
+              "Georgia               50\n",
+              "Virginia              31\n",
+              "South Carolina        25\n",
+              "Tennessee             20\n",
+              "Wyoming                3\n",
+              "West Virginia          3\n",
+              "Name: state, dtype: int64"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 5
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "# Cleaning Raw Data csv\n",
+        "\n",
+        "*   Remove duplicate\n",
+        "*   Check data types \n",
+        "*   Removing States with little to no data\n",
+        "*   Replace missing values"
+      ],
+      "metadata": {
+        "id": "dzRMMpSAJqVr"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "# Eliminate duplicates\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n"
+      ],
+      "metadata": {
+        "id": "PjsjT4jEInNF"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# drop datafram duplicates, subet by full_address\n",
+        "real_estate_data = real_estate_rawdata.drop_duplicates(subset= 'full_address', keep='first', ignore_index = True)\n",
+        "real_estate_data.shape"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "vkWb2Hh4I8G3",
+        "outputId": "846c7790-eb82-41aa-b7c9-04d9788abfbb"
+      },
+      "execution_count": 6,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "(112232, 12)"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 6
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "real_estate_data['state'].value_counts()"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "6RRuxmik8DXH",
+        "outputId": "7d91397d-dfcc-447f-ac7e-70b485c97f07"
+      },
+      "execution_count": 7,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "New Jersey        32299\n",
+              "New York          27952\n",
+              "Connecticut       13776\n",
+              "Massachusetts     10110\n",
+              "Pennsylvania       9001\n",
+              "Maine              4986\n",
+              "New Hampshire      3532\n",
+              "Rhode Island       3409\n",
+              "Puerto Rico        2632\n",
+              "Vermont            2500\n",
+              "Delaware           1277\n",
+              "Virgin Islands      742\n",
+              "Virginia              7\n",
+              "Georgia               5\n",
+              "Wyoming               1\n",
+              "South Carolina        1\n",
+              "West Virginia         1\n",
+              "Tennessee             1\n",
+              "Name: state, dtype: int64"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 7
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "# Check Data Types"
+      ],
+      "metadata": {
+        "id": "h-5fDgY6KApa"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# checking data types\n",
+        "real_estate_data.dtypes"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "O-dZj_biKgTI",
+        "outputId": "1930b544-b286-4664-e20e-4da3690e4f8b"
+      },
+      "execution_count": 8,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "status           object\n",
+              "price           float64\n",
+              "bed             float64\n",
+              "bath            float64\n",
+              "acre_lot        float64\n",
+              "full_address     object\n",
+              "street           object\n",
+              "city             object\n",
+              "state            object\n",
+              "zip_code        float64\n",
+              "house_size      float64\n",
+              "sold_date        object\n",
+              "dtype: object"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 8
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "# Missing Values"
+      ],
+      "metadata": {
+        "id": "Fwoz525FKIFY"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# `True` means there are missing values in the data\n",
+        "real_estate_data.isna().any()"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "vegsD3XvK5FW",
+        "outputId": "f3904b10-8feb-48e2-f5e1-a1e913e72364"
+      },
+      "execution_count": 9,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "status          False\n",
+              "price            True\n",
+              "bed              True\n",
+              "bath             True\n",
+              "acre_lot         True\n",
+              "full_address    False\n",
+              "street           True\n",
+              "city             True\n",
+              "state           False\n",
+              "zip_code         True\n",
+              "house_size       True\n",
+              "sold_date        True\n",
+              "dtype: bool"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 9
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# total number of values missing in each column\n",
+        "real_estate_data.isna().sum()"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "IE9cEvhZLM6x",
+        "outputId": "d76e3414-769e-4e67-c521-f5ca5059bb37"
+      },
+      "execution_count": 10,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "status              0\n",
+              "price               5\n",
+              "bed             17094\n",
+              "bath            15721\n",
+              "acre_lot        30451\n",
+              "full_address        0\n",
+              "street            232\n",
+              "city               23\n",
+              "state               0\n",
+              "zip_code           33\n",
+              "house_size      35756\n",
+              "sold_date       53024\n",
+              "dtype: int64"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 10
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# percent of values missing in each column\n",
+        "(real_estate_data.isna().sum()/real_estate_data.shape[0]).round(4) * 100"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "leMz83cbLWFz",
+        "outputId": "c32a1484-6bf9-453f-e329-dd2c3ff6efa5"
+      },
+      "execution_count": 11,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "status           0.00\n",
+              "price            0.00\n",
+              "bed             15.23\n",
+              "bath            14.01\n",
+              "acre_lot        27.13\n",
+              "full_address     0.00\n",
+              "street           0.21\n",
+              "city             0.02\n",
+              "state            0.00\n",
+              "zip_code         0.03\n",
+              "house_size      31.86\n",
+              "sold_date       47.24\n",
+              "dtype: float64"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 11
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "\n",
+        "\n",
+        "*   Not worried about: 'sold_date'\n",
+        "\n",
+        "\n"
+      ],
+      "metadata": {
+        "id": "wkRgkZkwLvw9"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# try to replace missing values with mean\n",
+        "# creating copy of df\n",
+        "real_estate_data_copy = real_estate_data.copy()\n",
+        "# correct missing values \n",
+        "real_estate_data_copy['price'] = real_estate_data_copy['price'].fillna(real_estate_data_copy['price'].mean())\n",
+        "real_estate_data_copy['house_size'] = real_estate_data_copy['house_size'].fillna(real_estate_data_copy['house_size'].mean())\n",
+        "real_estate_data_copy['bed'] = real_estate_data_copy['bed'].fillna(real_estate_data_copy['bed'].mean())\n",
+        "real_estate_data_copy['bath'] = real_estate_data_copy['bath'].fillna(real_estate_data_copy['bath'].mean())\n",
+        "real_estate_data_copy['acre_lot'] = real_estate_data_copy['acre_lot'].fillna(real_estate_data_copy['acre_lot'].mean())\n",
+        "\n",
+        "real_estate_data_copy.isna().sum()\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "3AyQVe_7Ucrw",
+        "outputId": "ef6f715f-d3d2-43ad-a259-542faff5dd16"
+      },
+      "execution_count": 12,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "status              0\n",
+              "price               0\n",
+              "bed                 0\n",
+              "bath                0\n",
+              "acre_lot            0\n",
+              "full_address        0\n",
+              "street            232\n",
+              "city               23\n",
+              "state               0\n",
+              "zip_code           33\n",
+              "house_size          0\n",
+              "sold_date       53024\n",
+              "dtype: int64"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 12
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "# Remove states with little to no data"
+      ],
+      "metadata": {
+        "id": "aVAMAh9xKai-"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "_Georgia, South Carolina, Tennessee, Virginia, West Virginia, Wyoming_ HAVE TO GO"
+      ],
+      "metadata": {
+        "id": "G8m0D7iyeLp3"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "real_estate_data_copy.drop(real_estate_data_copy.index[real_estate_data_copy['state'] == 'Georgia'], inplace = True)\n",
+        "real_estate_data_copy.drop(real_estate_data_copy.index[real_estate_data_copy['state'] == 'South Carolina'], inplace = True)\n",
+        "real_estate_data_copy.drop(real_estate_data_copy.index[real_estate_data_copy['state'] == 'Tennessee'], inplace = True)\n",
+        "real_estate_data_copy.drop(real_estate_data_copy.index[real_estate_data_copy['state'] == 'Virginia'], inplace = True)\n",
+        "real_estate_data_copy.drop(real_estate_data_copy.index[real_estate_data_copy['state'] == 'West Virginia'], inplace = True)\n",
+        "real_estate_data_copy.drop(real_estate_data_copy.index[real_estate_data_copy['state'] == 'Wyoming'], inplace = True)"
+      ],
+      "metadata": {
+        "id": "oaFN7bi5e6SK"
+      },
+      "execution_count": 13,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "# Also removing VI and PR, bc it is not in our story"
+      ],
+      "metadata": {
+        "id": "CkLaGPZpcwsb"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "real_estate_data_copy.drop(real_estate_data_copy.index[real_estate_data_copy['state'] == 'Virgin Islands'], inplace = True)\n",
+        "real_estate_data_copy.drop(real_estate_data_copy.index[real_estate_data_copy['state'] == 'Puerto Rico'], inplace = True)"
+      ],
+      "metadata": {
+        "id": "MCXJjXQAc2kr"
+      },
+      "execution_count": 14,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "# Removing Outliers"
+      ],
+      "metadata": {
+        "id": "xMiY7-BJvnbi"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# Price outliers \n",
+        "import numpy as np\n",
+        "q1 =  np.quantile(real_estate_data_copy['price'], 0.25)\n",
+        "q3 =  np.quantile(real_estate_data_copy['price'], 0.75)\n",
+        "\n",
+        "iqr = q3 - q1\n",
+        "\n",
+        "bound_low = q1 - 1.5 * iqr\n",
+        "bound_up = q3 + 1.5 * iqr\n",
+        "\n",
+        "real_estate_data_copy['price'] =  np.where(real_estate_data_copy['price'] > bound_up, bound_up, real_estate_data_copy['price'])\n",
+        "real_estate_data_copy['price'] =  np.where(real_estate_data_copy['price']< bound_low, bound_low, real_estate_data_copy['price'])"
+      ],
+      "metadata": {
+        "id": "shHeQr9evywO"
+      },
+      "execution_count": 15,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import matplotlib.pyplot as plt\n",
+        "plt.boxplot(real_estate_data_copy['price'])"
+      ],
+      "metadata": {
+        "id": "VMyVRxWJfyz5",
+        "outputId": "2380ec59-5b47-4647-c63b-beaaff9925d6",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 415
+        }
+      },
+      "execution_count": 16,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "{'whiskers': [<matplotlib.lines.Line2D at 0x7fa5e730d250>,\n",
+              "  <matplotlib.lines.Line2D at 0x7fa5e730d5b0>],\n",
+              " 'caps': [<matplotlib.lines.Line2D at 0x7fa5e730d910>,\n",
+              "  <matplotlib.lines.Line2D at 0x7fa5e730dc70>],\n",
+              " 'boxes': [<matplotlib.lines.Line2D at 0x7fa5e72f8eb0>],\n",
+              " 'medians': [<matplotlib.lines.Line2D at 0x7fa5e730dfd0>],\n",
+              " 'fliers': [<matplotlib.lines.Line2D at 0x7fa5e729b310>],\n",
+              " 'means': []}"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 16
+        },
+        {
+          "output_type": "display_data",
+          "data": {
+            "text/plain": [
+              "<Figure size 432x288 with 1 Axes>"
+            ],
+            "image/png": "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\n"
+          },
+          "metadata": {
+            "needs_background": "light"
+          }
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# Square footage outliers \n",
+        "q1 =  np.quantile(real_estate_data_copy['house_size'], 0.25)\n",
+        "q3 =  np.quantile(real_estate_data_copy['house_size'], 0.75)\n",
+        "\n",
+        "iqr = q3 - q1\n",
+        "\n",
+        "bound_low = q1 - 1.5 * iqr\n",
+        "bound_up = q3 + 1.5 * iqr\n",
+        "\n",
+        "real_estate_data_copy['house_size'] =  np.where(real_estate_data_copy['house_size'] > bound_up, bound_up, real_estate_data_copy['house_size'])\n",
+        "real_estate_data_copy['house_size'] =  np.where(real_estate_data_copy['house_size']< bound_low, bound_low, real_estate_data_copy['house_size'])"
+      ],
+      "metadata": {
+        "id": "OFs51EpixOxH"
+      },
+      "execution_count": 17,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "plt.boxplot(real_estate_data_copy['house_size'])"
+      ],
+      "metadata": {
+        "id": "eoT6RTEFgLBK",
+        "outputId": "b6e409f4-6339-4bea-ec7b-840435cb976b",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 404
+        }
+      },
+      "execution_count": 18,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "{'whiskers': [<matplotlib.lines.Line2D at 0x7fa5e6dd82b0>,\n",
+              "  <matplotlib.lines.Line2D at 0x7fa5e6dd8610>],\n",
+              " 'caps': [<matplotlib.lines.Line2D at 0x7fa5e6dd8970>,\n",
+              "  <matplotlib.lines.Line2D at 0x7fa5e6dd8cd0>],\n",
+              " 'boxes': [<matplotlib.lines.Line2D at 0x7fa5e7295f10>],\n",
+              " 'medians': [<matplotlib.lines.Line2D at 0x7fa5e6de3070>],\n",
+              " 'fliers': [<matplotlib.lines.Line2D at 0x7fa5e6de3370>],\n",
+              " 'means': []}"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 18
+        },
+        {
+          "output_type": "display_data",
+          "data": {
+            "text/plain": [
+              "<Figure size 432x288 with 1 Axes>"
+            ],
+            "image/png": "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\n"
+          },
+          "metadata": {
+            "needs_background": "light"
+          }
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [],
+      "metadata": {
+        "id": "lTFqYSM9eljQ"
+      },
+      "execution_count": 18,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "# Descriptive Statistics"
+      ],
+      "metadata": {
+        "id": "0EGAlotmMQ_n"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import numpy as np"
+      ],
+      "metadata": {
+        "id": "LpgbXZKmM4P0"
+      },
+      "execution_count": 19,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "real_estate_data_copy.describe().apply(lambda s: s.apply('{0:.5f}'.format))"
+      ],
+      "metadata": {
+        "id": "qwZm8bOFfKfQ",
+        "outputId": "d31c548f-cfde-4cc2-d8c2-f7dd0992b235",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 300
+        }
+      },
+      "execution_count": 20,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "               price           bed          bath      acre_lot      zip_code  \\\n",
+              "count   108842.00000  108842.00000  108842.00000  108842.00000  108835.00000   \n",
+              "mean    609308.02434       3.29932       2.51784      17.02448    8485.33975   \n",
+              "std     473384.34737       1.71623       1.61009     799.86387    4448.83256   \n",
+              "min          0.00000       1.00000       1.00000       0.00000     604.00000   \n",
+              "25%     259888.00000       2.00000       2.00000       0.15000    6110.50000   \n",
+              "50%     450000.00000       3.00000       2.00000       0.73000    8037.00000   \n",
+              "75%     800000.00000       4.00000       3.00000      17.82638   10308.00000   \n",
+              "max    1610168.00000     123.00000     198.00000  100000.00000   99999.00000   \n",
+              "\n",
+              "         house_size  \n",
+              "count  108842.00000  \n",
+              "mean     1948.62946  \n",
+              "std       719.32877  \n",
+              "min       202.02293  \n",
+              "25%      1376.00000  \n",
+              "50%      2158.65138  \n",
+              "75%      2158.65138  \n",
+              "max      3332.62845  "
+            ],
+            "text/html": [
+              "\n",
+              "  <div id=\"df-cbc6847e-e3f7-4c5c-87e0-8b797ff871ad\">\n",
+              "    <div class=\"colab-df-container\">\n",
+              "      <div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>price</th>\n",
+              "      <th>bed</th>\n",
+              "      <th>bath</th>\n",
+              "      <th>acre_lot</th>\n",
+              "      <th>zip_code</th>\n",
+              "      <th>house_size</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>count</th>\n",
+              "      <td>108842.00000</td>\n",
+              "      <td>108842.00000</td>\n",
+              "      <td>108842.00000</td>\n",
+              "      <td>108842.00000</td>\n",
+              "      <td>108835.00000</td>\n",
+              "      <td>108842.00000</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>mean</th>\n",
+              "      <td>609308.02434</td>\n",
+              "      <td>3.29932</td>\n",
+              "      <td>2.51784</td>\n",
+              "      <td>17.02448</td>\n",
+              "      <td>8485.33975</td>\n",
+              "      <td>1948.62946</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>std</th>\n",
+              "      <td>473384.34737</td>\n",
+              "      <td>1.71623</td>\n",
+              "      <td>1.61009</td>\n",
+              "      <td>799.86387</td>\n",
+              "      <td>4448.83256</td>\n",
+              "      <td>719.32877</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>min</th>\n",
+              "      <td>0.00000</td>\n",
+              "      <td>1.00000</td>\n",
+              "      <td>1.00000</td>\n",
+              "      <td>0.00000</td>\n",
+              "      <td>604.00000</td>\n",
+              "      <td>202.02293</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>25%</th>\n",
+              "      <td>259888.00000</td>\n",
+              "      <td>2.00000</td>\n",
+              "      <td>2.00000</td>\n",
+              "      <td>0.15000</td>\n",
+              "      <td>6110.50000</td>\n",
+              "      <td>1376.00000</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>50%</th>\n",
+              "      <td>450000.00000</td>\n",
+              "      <td>3.00000</td>\n",
+              "      <td>2.00000</td>\n",
+              "      <td>0.73000</td>\n",
+              "      <td>8037.00000</td>\n",
+              "      <td>2158.65138</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>75%</th>\n",
+              "      <td>800000.00000</td>\n",
+              "      <td>4.00000</td>\n",
+              "      <td>3.00000</td>\n",
+              "      <td>17.82638</td>\n",
+              "      <td>10308.00000</td>\n",
+              "      <td>2158.65138</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>max</th>\n",
+              "      <td>1610168.00000</td>\n",
+              "      <td>123.00000</td>\n",
+              "      <td>198.00000</td>\n",
+              "      <td>100000.00000</td>\n",
+              "      <td>99999.00000</td>\n",
+              "      <td>3332.62845</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>\n",
+              "      <button class=\"colab-df-convert\" onclick=\"convertToInteractive('df-cbc6847e-e3f7-4c5c-87e0-8b797ff871ad')\"\n",
+              "              title=\"Convert this dataframe to an interactive table.\"\n",
+              "              style=\"display:none;\">\n",
+              "        \n",
+              "  <svg xmlns=\"http://www.w3.org/2000/svg\" height=\"24px\"viewBox=\"0 0 24 24\"\n",
+              "       width=\"24px\">\n",
+              "    <path d=\"M0 0h24v24H0V0z\" fill=\"none\"/>\n",
+              "    <path d=\"M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z\"/><path d=\"M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z\"/>\n",
+              "  </svg>\n",
+              "      </button>\n",
+              "      \n",
+              "  <style>\n",
+              "    .colab-df-container {\n",
+              "      display:flex;\n",
+              "      flex-wrap:wrap;\n",
+              "      gap: 12px;\n",
+              "    }\n",
+              "\n",
+              "    .colab-df-convert {\n",
+              "      background-color: #E8F0FE;\n",
+              "      border: none;\n",
+              "      border-radius: 50%;\n",
+              "      cursor: pointer;\n",
+              "      display: none;\n",
+              "      fill: #1967D2;\n",
+              "      height: 32px;\n",
+              "      padding: 0 0 0 0;\n",
+              "      width: 32px;\n",
+              "    }\n",
+              "\n",
+              "    .colab-df-convert:hover {\n",
+              "      background-color: #E2EBFA;\n",
+              "      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);\n",
+              "      fill: #174EA6;\n",
+              "    }\n",
+              "\n",
+              "    [theme=dark] .colab-df-convert {\n",
+              "      background-color: #3B4455;\n",
+              "      fill: #D2E3FC;\n",
+              "    }\n",
+              "\n",
+              "    [theme=dark] .colab-df-convert:hover {\n",
+              "      background-color: #434B5C;\n",
+              "      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);\n",
+              "      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));\n",
+              "      fill: #FFFFFF;\n",
+              "    }\n",
+              "  </style>\n",
+              "\n",
+              "      <script>\n",
+              "        const buttonEl =\n",
+              "          document.querySelector('#df-cbc6847e-e3f7-4c5c-87e0-8b797ff871ad button.colab-df-convert');\n",
+              "        buttonEl.style.display =\n",
+              "          google.colab.kernel.accessAllowed ? 'block' : 'none';\n",
+              "\n",
+              "        async function convertToInteractive(key) {\n",
+              "          const element = document.querySelector('#df-cbc6847e-e3f7-4c5c-87e0-8b797ff871ad');\n",
+              "          const dataTable =\n",
+              "            await google.colab.kernel.invokeFunction('convertToInteractive',\n",
+              "                                                     [key], {});\n",
+              "          if (!dataTable) return;\n",
+              "\n",
+              "          const docLinkHtml = 'Like what you see? Visit the ' +\n",
+              "            '<a target=\"_blank\" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'\n",
+              "            + ' to learn more about interactive tables.';\n",
+              "          element.innerHTML = '';\n",
+              "          dataTable['output_type'] = 'display_data';\n",
+              "          await google.colab.output.renderOutput(dataTable, element);\n",
+              "          const docLink = document.createElement('div');\n",
+              "          docLink.innerHTML = docLinkHtml;\n",
+              "          element.appendChild(docLink);\n",
+              "        }\n",
+              "      </script>\n",
+              "    </div>\n",
+              "  </div>\n",
+              "  "
+            ]
+          },
+          "metadata": {},
+          "execution_count": 20
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# average price of a home by 'bed' count\n",
+        "real_estate_data_copy.groupby('bed')['price'].agg(np.mean).round(2) "
+      ],
+      "metadata": {
+        "id": "-fkB0uWIMVQC",
+        "outputId": "793e3195-fc75-4058-bb6f-e7b41e5014b3",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "execution_count": 21,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "bed\n",
+              "1.000000       558414.08\n",
+              "2.000000       570817.09\n",
+              "3.000000       544415.72\n",
+              "3.306597       351855.35\n",
+              "4.000000       717245.69\n",
+              "5.000000       970301.98\n",
+              "6.000000       948933.97\n",
+              "7.000000      1035892.96\n",
+              "8.000000       946393.03\n",
+              "9.000000       872472.97\n",
+              "10.000000      991216.21\n",
+              "11.000000     1226004.78\n",
+              "12.000000     1107537.61\n",
+              "13.000000     1095744.14\n",
+              "14.000000     1245984.89\n",
+              "15.000000     1252038.86\n",
+              "16.000000     1318188.29\n",
+              "17.000000     1373738.50\n",
+              "18.000000     1247755.30\n",
+              "19.000000     1407625.88\n",
+              "20.000000     1413824.00\n",
+              "21.000000     1406584.00\n",
+              "22.000000     1610168.00\n",
+              "23.000000     1350000.00\n",
+              "24.000000     1491806.67\n",
+              "25.000000      729000.00\n",
+              "27.000000     1405084.00\n",
+              "28.000000     1516100.80\n",
+              "29.000000     1610168.00\n",
+              "30.000000      937500.00\n",
+              "31.000000      953387.67\n",
+              "32.000000     1610168.00\n",
+              "33.000000     1610168.00\n",
+              "36.000000     1610168.00\n",
+              "40.000000     1610168.00\n",
+              "42.000000     1610168.00\n",
+              "46.000000     1610168.00\n",
+              "47.000000     1399000.00\n",
+              "49.000000     1610168.00\n",
+              "60.000000     1610168.00\n",
+              "68.000000     1610168.00\n",
+              "86.000000     1610168.00\n",
+              "99.000000     1610168.00\n",
+              "123.000000    1610168.00\n",
+              "Name: price, dtype: float64"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 21
+        }
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "# New Features"
+      ],
+      "metadata": {
+        "id": "Zd5XMcZQXleB"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "#calculating the price/sqft by house size\n",
+        "real_estate_data_copy['price_sqft'] = real_estate_data_copy['price']/real_estate_data_copy['house_size']\n",
+        "\n",
+        "real_estate_data_copy['price_sqft']\n"
+      ],
+      "metadata": {
+        "id": "EtsYe99oX8IG",
+        "outputId": "24427a93-39b4-4b80-f353-de955b936bf8",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "execution_count": 22,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "3363      266.272189\n",
+              "3364       11.581305\n",
+              "3365      190.470852\n",
+              "3366      169.467787\n",
+              "3367      180.801688\n",
+              "             ...    \n",
+              "112227    739.287420\n",
+              "112228    428.964758\n",
+              "112229    714.926042\n",
+              "112230    483.152570\n",
+              "112231    483.152570\n",
+              "Name: price_sqft, Length: 108842, dtype: float64"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 22
+        }
+      ]
