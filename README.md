@@ -19,9 +19,13 @@ Preferences of client:
 
 # Process of Our Analysis
 -Gathering sufficient data
+
 -Cleaning the data and missing values
+
 -Doing initial analysis to gauge the depth of our data's ability
+
 -Further the analysis to find a recommendation
+
 -Give our client recommended listing
 # Data Source
  The data set was found on Kaggle.com and is called "USA Real Estate Data"
