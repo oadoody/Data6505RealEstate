@@ -17,7 +17,7 @@ Preferences of client:
    Price Range: Maximize the value of dollar to the home offerings
     Looking for most acrerage, bed/bath, price/sqft value possible to compell relocation
 
-#Process of Our Analysis
+# Process of Our Analysis
 -Gathering sufficient data
 -Cleaning the data and missing values
 -Doing initial analysis to gauge the depth of our data's ability
