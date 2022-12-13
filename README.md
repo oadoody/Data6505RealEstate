@@ -13,7 +13,8 @@ Authors: Brian Brennan, Frank Patracuolla, Olivia Doody
      We are catering our analysis to a family with two young children and their location is flexible due to their jobs moving online following the COVID-19 pandemic. 
 
 Preferences of client:
-   Traditional
+   Traditional Family
+   
    Price Range: Maximize the value of dollar to the home offerings
     Looking for most acrerage, bed/bath, price/sqft value possible to compell relocation
 
