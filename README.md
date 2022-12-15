@@ -6,7 +6,7 @@ Final Project: Real Estate Moving Data Analysis
 Authors: Brian Brennan, Frank Patracuolla, Olivia Doody
  
  # Objective
-  Our objective with this dataset was to help a family that is looking for a home in the NorthEast the US. We wanted to advise them in finding the best house for them at the lowest price.
+  Our objective with this dataset was to help a family that is looking for a home in the NorthEast the US. We wanted to advise them in finding the best location for them at the lowest price.
   
  # The Client
   Background of our client:
