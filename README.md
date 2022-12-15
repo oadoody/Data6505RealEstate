@@ -40,5 +40,4 @@ Authors: Brian Brennan, Frank Patracuolla, Olivia Doody
 [LINK](https://github.com/oadoody/Data6505RealEstate/blob/main/Finding_A_Home.ipynb) to Project Notebook 
 
 # Additional Links
-- [LINK] to Individual Team Notebook
-     - [Brian's notebook] (tba)
+- [LINK](https://colab.research.google.com/drive/10BzXZmXh5odliQHxNUAhDrbUJEwI6RQ2?usp=sharing) to Individual Team Notebook
