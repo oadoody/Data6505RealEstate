@@ -25,7 +25,7 @@ Authors: Brian Brennan, Frank Patracuolla, Olivia Doody
 
 -Further the analysis to find a recommendation for our client
 
--Give our client recommended listing
+-Recommended our client a location
 # Data Source
  The data set was found on Kaggle.com and is called "USA Real Estate Data"
  
