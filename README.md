@@ -39,7 +39,7 @@ Authors: Brian Brennan, Frank Patracuolla, Olivia Doody
   Although the dataset had 900,000 listings, many of them were duplicates which needed to be taken out. The dataset only have listings from 18 states. After we had removed duplicates some of these states only had one or a few listings. In order to increase the accuracy of our analysis we left these out so they would not skew our findings, leaving our group with a narrowed selection of states all commonly in the NorthEast.
 
 # Complete Project
-[LINK] to Project Notebook (https://github.com/oadoody/Data6505RealEstate/blob/main/DRAFT_Find_A_Home.ipynb)
+[LINK] (https://github.com/oadoody/Data6505RealEstate/blob/main/DRAFT_Find_A_Home.ipynb) to Project Notebook 
 
 
 # Additional Links
