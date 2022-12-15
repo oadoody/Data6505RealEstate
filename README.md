@@ -31,7 +31,7 @@ Authors: Brian Brennan, Frank Patracuolla, Olivia Doody
 # Data Source
  The data set was found on Kaggle.com and is called "USA Real Estate Data"
  
- 00,000 listings were scraped from Realtor.com in order to compose this dataset. 
+ 900,000 listings were scraped from Realtor.com in order to compose this dataset. 
  
  You can find the Kaggle page [here](https://www.kaggle.com/datasets/ahmedshahriarsakib/usa-real-estate-dataset?select=realtor-data.csv).
 
