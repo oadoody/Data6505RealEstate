@@ -12,7 +12,7 @@ Authors: Brian Brennan, Frank Patracuolla, Olivia Doody
   Background of our client:
      We are catering our analysis to a family with two young children and their location is flexible due to their jobs moving online following the COVID-19 pandemic. 
 
-**Preferences of client:** Two bedrooms and atleast two bathrooms
+**Preferences of client:** Three bedrooms and atleast two bathrooms
    
    **Price Range:** The main goal is to maximize the value of the house (bedrooms, bathrooms, square footage) while maintaing a low price. The family has a specific budget of $1,000,000.
 
