@@ -25,7 +25,7 @@ Authors: Brian Brennan, Frank Patracuolla, Olivia Doody
 
 -Doing initial analysis to gauge the depth of our data's ability
 
--Further the analysis to find a recommendation
+-Further the analysis to find a recommendation for our client
 
 -Give our client recommended listing
 # Data Source
@@ -39,8 +39,9 @@ Authors: Brian Brennan, Frank Patracuolla, Olivia Doody
   Although the dataset had 900,000 listings, many of them were duplicates which needed to be taken out. The dataset only have listings from 18 states. After we had removed duplicates some of these states only had one or a few listings. In order to increase the accuracy of our analysis we left these out so they would not skew our findings, leaving our group with a narrowed selection of states all commonly in the NorthEast.
 
 # Complete Project
-LINK to Project
+[LINK] to Project Notebook (https://github.com/oadoody/Data6505RealEstate/blob/main/DRAFT_Find_A_Home.ipynb)
 
 
 # Additional Links
-- Individual team notebook
+- Individual team notebooks
+     - [Brian's notebook] (tba)
